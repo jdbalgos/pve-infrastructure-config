@@ -1,0 +1,4 @@
+---
+gateway_vmid: 2001
+gateway_hostname: gateway.playground.io
+gateway_netif: '{"net0":"name=eth0,ip=192.168.254.11/24,gw=192.168.254.254,bridge=vmbr0","net1":"name=eth1,bridge=vmbr1"}'
