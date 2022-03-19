@@ -1,0 +1,45 @@
+---
+- name: install necessary packages 
+  dnf:
+    name:
+      - dhcp-server
+      - bind
+      - bind-utils
+      - iptables
+      - iptables-services
+- name: copy files to each specific directory
+  copy:
+    src: files/dhcpd.conf
+    dest: /etc/dhcp/dhcpd.conf
+- name: for named
+  copy:
+    src: files/named.conf
+    dest: /etc/named.conf
+- name: forward rule
+  copy:
+    src: files/playground.forward
+    dest: /var/named/
+- name: reverse rule
+  copy:
+    src: files/playground.reverse
+    dest: /var/named/
+- name: copy and save iptables
+  copy:
+    src: files/iptables
+    dest: /etc/sysconfig/iptables
+- name: edit sysctl, enable ip forwarding
+  sysctl:
+    name: net.ipv4.ip_forward
+    value: '1'
+    sysctl_set: yes
+    state: present
+    reload: yes
+- name: start services
+  service:
+    name: "{{ item }}"
+    state: started
+    enabled: true
+  with_items:
+    - dhcpd
+    - named
+    - iptables

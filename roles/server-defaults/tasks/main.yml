@@ -1,0 +1,16 @@
+---
+- name: update all packages
+  dnf:
+    name: '*'
+    state: latest
+- name: install other packages as well
+  dnf:
+    name:
+      - less
+      - bash-completion
+      - vim
+      - wget
+- name: install firewalld
+  dnf:
+    name: firewalld
+  when: ansible_hostname !=  "gateway"

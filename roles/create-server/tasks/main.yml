@@ -15,13 +15,16 @@
     storage: "{{ pve_storage_name }}"
     state: present
     timeout: 60
-    password: "{{ container_passwd }}"
-    pubkey: "{{ container_pubkey }}"
+    password: "{{ server_passwd }}"
+    pubkey: "{{ server_pubkey }}"
     onboot: no
     swap: "{{ server_swap }}"
     memory: "{{ server_memory }}"
     disk: "{{ pve_storage_name }}:{{ server_disk }}"
     netif: "{{ server_netif }}"
+    unprivileged: "{{ unprivileged_status }}"
+    nameserver: "{{ server_nameserver }}"
+    searchdomain: "{{ server_searchdomain }}"
 - name: start the server
   community.general.proxmox:
     vmid: "{{ server_vmid }}"

@@ -1,7 +1,7 @@
 ---
 - name: dnf install sshd
   shell:
-    cmd: "/usr/bin/lxc-attach -n {{ vmid }} -- /usr/bin/dnf install -y openssh-server || /usr/bin/dnf install -y openssh-server"
+    cmd: "/usr/bin/lxc-attach -n {{ vmid }} -- /usr/bin/dnf install -y openssh-server-8.0p1 || /usr/bin/dnf install -y openssh-server-8.0p1"
 - name: enable sshd
   shell:
     cmd: "/usr/bin/lxc-attach -n {{ vmid }} -- /usr/bin/systemctl enable --now sshd"

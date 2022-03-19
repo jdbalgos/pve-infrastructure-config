@@ -1,0 +1,7 @@
+---
+- name: Setup gateway for playground dhcp and dns configuration
+  hosts: gateway
+  tasks:
+  - name: setup gateway using role
+    include_role:
+      name: setup-gateway

@@ -1,0 +1,12 @@
+$TTL 86400
+@       IN      SOA     gateway.playground.io.     root.playground.io (
+        2011071001      ;Serial
+        3600    ;Refresh
+        1800    ;Retry
+        604800  ;Expire
+        86400   ;Minimum TTL
+)
+
+@           IN  NS  gateway.playground.io.
+@           IN  A   10.10.100.1
+gateway     IN  A   10.10.100.1

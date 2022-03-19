@@ -10,26 +10,29 @@
 #      name: create-server
 #    vars: ## Server defaults
 #      server_vmid: 100
-#      server_hostname: default.playground.io
-#      server_netif: '{"net0":"name=eth0,ip=dhcp,bridge=vmbr0"}'
+#      server_hostname: default.sandbox.io
+#      server_netif: '{"net0":"name=eth0,ip=dhcp,bridge=vmbr0"}' ## add hwaddr for custom MAC address
 #      server_ostemplate: rockylinux-8-default_20210929_amd64.tar.xz
 #      server_memory: 512
 #      server_swap: 256
 #      server_disk: 5
 #      server_cores: 1
-  - name: create server for gateway and set it up
+#      keyctl_status: false
+#      unprivileged_status: true
+  - name: create gateway server 
     include_role:
       name: create-server
     vars:
       server_vmid: "{{ gateway_vmid }}"
       server_hostname: "{{ gateway_hostname }}"
       server_netif: "{{ gateway_netif }}"
+      server_nameserver: "{{ gateway_nameserver }}"
 - name: pve connection to setup rockylinux
   hosts: pve
   tasks:
   - name: define include role for loop
     include_role:
-      name: setup-server
+      name: setup-ssh
     vars:
       vmid: "{{ item }}"
     with_items:
