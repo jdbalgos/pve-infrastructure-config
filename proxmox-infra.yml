@@ -13,7 +13,7 @@
 #      server_hostname: default.sandbox.io
 #      server_netif: '{"net0":"name=eth0,ip=dhcp,bridge=vmbr0"}' ## add hwaddr for custom MAC address
 #      server_ostemplate: rockylinux-8-default_20210929_amd64.tar.xz
-#      server_memory: 512
+#      server_memory: 256
 #      server_swap: 256
 #      server_disk: 5
 #      server_cores: 1
@@ -27,16 +27,12 @@
       server_hostname: "{{ gateway_hostname }}"
       server_netif: "{{ gateway_netif }}"
       server_nameserver: "{{ gateway_nameserver }}"
-- name: pve connection to setup rockylinux
-  hosts: pve
-  tasks:
-  - name: define include role for loop
+  - name: create vpn server
     include_role:
-      name: setup-ssh
+      name: create-server
     vars:
-      vmid: "{{ item }}"
-    with_items:
-     - "{{ gateway_vmid }}"
-# In order for sshd to be available on created server, you need to add the server vmid to the loop function:
-#     - "{{ some_server_vmid }}"
+      server_vmid: "{{ docker_vmid }}"
+      server_hostname: "{{ docker_hostname }}"
+      server_netif: "{{ docker_netif }}"
+      server_memory: "{{ docker_memory}}"
 ...

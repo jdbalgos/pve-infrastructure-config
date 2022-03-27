@@ -7,6 +7,12 @@ $TTL 86400
         86400   ;Minimum TTL
 )
 
+; Gateway reverse lookup
 @           IN  NS  gateway.playground.io.
-dnsdhcp     IN  A   10.10.100.1
+gateway     IN  A   10.10.100.1
 1           IN  PTR gateway.playground.io.
+
+; VPN reverse lookup
+@           IN  NS  docker.playground.io.
+docker      IN  A   10.10.100.100
+100         IN  PTR docker.playground.io.

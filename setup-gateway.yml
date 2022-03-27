@@ -1,4 +1,12 @@
 ---
+- name: installation of sshd as lxc dont have ssh installed
+  hosts: pve
+  tasks:
+  - name: include_role of setup-ssh
+    include_role:
+      name: setup-ssh
+    vars:
+      vmid: "{{ gateway_vmid }}"
 - name: Setup gateway for playground dhcp and dns configuration
   hosts: gateway
   tasks:

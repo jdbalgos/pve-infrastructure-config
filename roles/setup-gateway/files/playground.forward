@@ -7,6 +7,12 @@ $TTL 86400
         86400   ;Minimum TTL
 )
 
+; Gateway forward lookup
 @           IN  NS  gateway.playground.io.
 @           IN  A   10.10.100.1
 gateway     IN  A   10.10.100.1
+
+; VPN forward lookup
+@           IN  NS  docker.playground.io.
+@           IN  A   10.10.100.100
+docker      IN  A   10.10.100.100
