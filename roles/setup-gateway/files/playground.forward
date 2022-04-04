@@ -12,7 +12,12 @@ $TTL 86400
 @           IN  A   10.10.100.1
 gateway     IN  A   10.10.100.1
 
-; VPN forward lookup
-@           IN  NS  docker.playground.io.
+; Jenkins forward lookup
+@           IN  NS  jenkins.playground.io.
 @           IN  A   10.10.100.100
-docker      IN  A   10.10.100.100
+jenkins      IN  A   10.10.100.100
+
+; Docker forward lookup
+@           IN  NS  docker.playground.io.
+@           IN  A   10.10.100.101
+docker      IN  A   10.10.100.101

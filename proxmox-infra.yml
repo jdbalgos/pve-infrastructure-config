@@ -27,7 +27,15 @@
       server_hostname: "{{ gateway_hostname }}"
       server_netif: "{{ gateway_netif }}"
       server_nameserver: "{{ gateway_nameserver }}"
-  - name: create vpn server
+  - name: create jenkins server
+    include_role:
+      name: create-server
+    vars:
+      server_vmid: "{{ jenkins_vmid }}"
+      server_hostname: "{{ jenkins_hostname }}"
+      server_netif: "{{ jenkins_netif }}"
+      server_memory: "{{ jenkins_memory}}"
+  - name: create docker server
     include_role:
       name: create-server
     vars:
@@ -35,4 +43,5 @@
       server_hostname: "{{ docker_hostname }}"
       server_netif: "{{ docker_netif }}"
       server_memory: "{{ docker_memory}}"
+      server_disk: "{{ docker_disk }}"
 ...

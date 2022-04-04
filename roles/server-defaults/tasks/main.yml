@@ -15,6 +15,12 @@
   dnf:
     name: firewalld
   when: ansible_hostname !=  "gateway"
+- name: enable firewalld
+  service:
+    name: firewalld
+    state: started
+    enabled: true
+  when: ansible_hostname !=  "gateway"
 - name: add vimrc to root home and skel
   copy:
     src: "files/vimrc"

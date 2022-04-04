@@ -4,3 +4,5 @@ pve01.sandbox.io
 gateway.playground.io
 [docker]
 docker.playground.io
+[jenkins]
+jenkins.playground.io
