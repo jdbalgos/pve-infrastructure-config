@@ -17,7 +17,7 @@ gateway     IN  A   10.10.100.1
 jenkins      IN  A   10.10.100.100
 100         IN  PTR jenkins.playground.io.
 
-; Docker reverse lookup
-@           IN  NS  docker.playground.io.
-docker      IN  A   10.10.100.101
-101         IN  PTR docker.playground.io.
+; PVE01 reverse lookup
+@           IN  NS  pve01.playground.io.
+pve01       IN  A   10.10.100.254
+254         IN  PTR pve01.playground.io.
