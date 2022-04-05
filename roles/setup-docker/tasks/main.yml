@@ -6,6 +6,7 @@
 - name: install docker and tools
   dnf:
     name:
+      - java-11-openjdk
       - docker-ce
       - docker-ce-cli
       - containerd.io
@@ -19,3 +20,9 @@
     url: https://github.com/docker/compose/releases/download/1.29.2/docker-compose-Linux-x86_64
     dest: /usr/local/bin/docker-compose
     mode: '0755'
+- name: firewalld
+  firewalld:
+    port: "8080-9000/tcp"
+    state: enabled
+    permanent: true
+    immediate: true

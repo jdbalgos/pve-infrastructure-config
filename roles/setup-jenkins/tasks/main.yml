@@ -40,4 +40,4 @@
     state: latest
   with_items:
     - ansible
-    - promoxer
+    - proxmoxer
