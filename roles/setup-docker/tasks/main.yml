@@ -10,6 +10,12 @@
       - docker-ce
       - docker-ce-cli
       - containerd.io
+      - git
+- name: add deve user to use docker
+  user:
+    name: deve
+    append: true
+    groups: docker
 - name: enable and start docker
   service:
     name: docker
