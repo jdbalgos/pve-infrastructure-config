@@ -1,0 +1,15 @@
+---
+- name: check ban
+  hosts: pve
+  tasks:
+  - name: setup ssh for build service
+    include_role:
+      name: setup-ssh
+    vars:
+      vmid: "{{ build_vmid }}"
+- name: setup build server
+  hosts: build
+  tasks:
+  - name: include_role for build setup
+    include_role:
+      name: setup-build
